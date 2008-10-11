@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Esta página contendrá enlaces a los enunciados y datos de prueba oficiales
 = Enunciados de los problemas y sus respectivos datos de prueba =
 == 2005 ==
 == 2006 ==
