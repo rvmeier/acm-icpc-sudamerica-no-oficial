@@ -1,0 +1,54 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{url}
+\usepackage[spanish]{babel}
+\title{Problema H: Él está fuera de juego}
+\author{traducido por: Alfredo Paz-Valderrama}
+\date{}
+\begin{document}
+\maketitle
+ Hemisphere Network es la cadena de televisión más grande en Tumbolia, un pequeño país localizado al este de Sudamerica (o sur de América del Este). El deporte más popular en Tumbolia es el futbol, por supuesto; muchos juegos son transmitidos en señal abierta, cada semana en Tumbolia.
+
+La cadena recive muchos pedidos para repetir jugadas dudosas; usualmente, esto ocurre cuando un jugador es encontrado en posición adelantada (\emph{offside}). Un jugador atacante está \emph{offside} si él está más cerca a la línea de meta que el segundo último oponente. Un jugador no está en \emph{offside} si:
+ \begin{itemize}
+  \item él está en línea con el segundo último oponente o
+  \item él esta en línea con al menos dos oponentes.
+ \end{itemize}
+
+A través del uso de la tecnología de gráficos en computadora, Hemisphere Network puede tomar una imagen del campo y determinar la distancia de los jugadores a la línea de méta, pero ellos aún necesitan un programa que, dadas estas distancias, decida si un jugador está en \emph{offise}.
+
+
+
+\section*{Entrada}
+
+El archivo de entrada contiene varios casos de prueba. La primera línea de cada caso de prueba contiene dos enteros $A$ y $D$ separados por un sólo espacio indicando, respectivamente, el número de atacantes y defensores involucrados en el juego ($d \leq A, D \leq 11$). La siguiente línea contiene $A$ enteros $B_i$ separados por espacios en blanco, indicando las distancias de los atacantes a la línea de meta ($1 \leq B_i \leq 10^4$). La siguiente línea contiene $D$ enteros $C_j$ separados por espacios en blanco, indicando las distancias de los defensores a la línea de meta ($1 \leq C_j \leq 10^4$). El final de la entrada es indicado por $A = D = 0$.
+ 
+ \emph{La entrada debería ser leida de la entrada estandar} 
+
+\section*{Salida}
+
+ Para cada paso de prueba en la entrada imprimir una l'inea conteniendo un solo caracter: ``\verb|Y|'' (may'uscula) si hay un atacante en \emph{offside}, y ``\verb|N|'' (may'uscula) en otro caso.
+
+\emph{La salida deberá ser escrita a la salida estandar.}\\
+
+\begin{tabular}{|l|l|}
+  \hline
+  \textbf{Ejemplo de Entrada}&\textbf{Ejemplo de salidad para la entrada}\\
+   &\\
+ \verb|2 3| &\verb|N|\\
+ \verb|500 700| & \verb|Y|\\
+ \verb|700 500 500| & \verb|N|\\
+ \verb|2 2|& \\
+ \verb|200 400|& \\
+ \verb|200 1000|&\\
+ \verb|3 4|&\\
+ \verb|530 510 490|&\\
+ \verb|480 470 50 310|&\\
+ \verb|0 0|&\\
+  \hline
+\end{tabular}
+
+\end{document}

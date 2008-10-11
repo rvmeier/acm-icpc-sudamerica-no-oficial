@@ -1,8 +1,8 @@
 import java.util.*;
 
 /**
+ * ACM ICPC 2007 - Problem C "Car Plates Competition" 
  * @author Alfredo Paz-Valderrama
- * Problema C 
  *
  * */
 public class carplates{
