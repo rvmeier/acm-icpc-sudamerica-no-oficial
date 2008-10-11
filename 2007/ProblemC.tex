@@ -1,0 +1,65 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{url}
+\usepackage[spanish]{babel}
+\title{Competencia de Placas de Carros}
+\author{traducido por: Alfredo Paz-Valderrama}
+\date{}
+\begin{document}
+\maketitle
+Martin e Isa son muy competitivos. La competencia más reciente que han creado es acerca de observar las placas de los carros. Cada vez que uno de ellos ve una placa en las calles, el o ella envía un mensaje SMS al otro con el número de la placa; El que observa la placa más reciente, lidera el juego. Como la oficina de \emph{Automovile Car Management} (ACM) asigna las placas secuencialmente en orden creciente, ellos puede compararlas y saber quien es el gandador.
+
+Martin tiene muy buen ojo y se ha mantenido a la delantera por varias semanas.  Quizá se mantiene observando las calles en lugar de trabajar o quizá el permanece todo el día en frente de las compañias vendedoras de autos, esperando por la salida de los autos nuevos con nuevas placas.  Isa, cansada de estar siempre un paso detrás, ha escrito un programa que genera una placa de carro aleatoria, d modo que la siguiente vez que Martin le envíe un mensaje, ella responderá con esta placa generada. De esta manera, ella espera que Martin pase un buen tiempo tratando de superarla.
+
+Sin embargo, Martin tiene sospechas y quiere determinar si Isa efectívamente vióo no vió al carro con la placa dada. De esta manera, el sabrá si Isa está liderando el juego.
+
+Él conoce algunos hechos acerca de las placas asignadas por la ACM:
+
+\begin{itemize}
+   \item Cada placa es una combinación de 7 caracteres, los cuales deberían ser letras Mayúsculas (A-Z) o digitos (0-9)
+   \item Existen dos tipos de esquemas para placas: el antiguo, usado por muchos años, y el nuevo, que ha sido usado por varios meses, después de que las combinaciones del antíguo se agotaron.
+  \item En el antiguo esquema, los primeros tres caracteres eran letras y los cuatro últimos eran dígitos, de modo que las placas estarían entre \verb|AAA0000| a \verb|ZZZ9999|.
+  \item En el nuevo esquema, los primeros cinco caracteres son letras y los dos úlitmos son dígitos. Desafortunamente, el jefe del ACM ha desordenado el sistema de impresión mientras trataba de crear un poster para su campaña a la alcaldía y la impresora no puede imprimir las letras A, C, M, I y P. Por lo tanto, en este nuevo esquema, la primera placa es \verb|BBBBB00|, en lugar de \verb|AAAAA00|.
+  \item Las placas son asignadas siguiendo un orden secuencial. Como un caso particular, la última placa del antiguo esquema es seguida por la primera placa del nuevo esquema.
+\end{itemize}
+
+Como Isa no esta enterada de todo esto, ella está seguro de que generador aleatorio crea una combinación consistente de 7 caracteres, donde los primeros tres caracteres son siempre letras mayúsculas, los dos últimos son siempre dígitos y cada uno de los cuarto y quinto caracteres podrían ser letras mayúsculas o dígitos (esto podría generar combinación incorrectas, pero ella no tiene mucho tiempo de preocuparse por esto).
+
+Por supuesto, Martin no considerará ganadara a Isa, si él recibe una combinación ilegal o si el recibe una placa correcta pero más antigua que la suya. Pero esto no es todo. Desde que Martin conoce que las nuevas placas no son generadas muy rápido, él no creerá que Isa ve un carro con una placa más reciente que la suya, pero secuncialmente muy lejana. Por ejemplo, si Martin envía \verb|DDDDD45| y recibe \verb|ZZZZZ45|, él no creerá qu Isa vió un carro con esa placa, porque el sabe que la ACM no podría haber impreso suficientes placas para generar \verb|ZZZZZ45| en el tiempo en que él recibió la respuesta.
+
+Así que Martin ha decidido considerar a Isa la ganadora sólo si el recibe una placa legal, más reciente que la suya y tan o igual de antigua, que la $C-$ésima consecutiva placa posterior a la que él envió. El lo llama su $C$ \emph{número confidencial}. Por ejemplo, si Martin envía \verb|ABC1234| y su número confidencial es 6, el pensará que Isa es la ganadora sólo si el recibe una placa más reciente que \verb|ABC1234|, pero tan o más antigua que \verb|ABC1240|.
+
+\section*{Entrada}
+
+La entrada consistirá de varios casos de prueba. Cada caso de prueba es descrito en una sola línea que contiene dos cadenas $S_M$ y $S_I$ y un entero $C$, separado por un solo espacio. $S_M$ es la cadena de 7 caracteres enviada por Martin, la cual es siempre una placa legal. $S_I$ es la cadena de 7 caracteres respondida por Isa, la cual fue generada usando su generador aleatorio. $C$ es el número confidencial de Martin ($º \leq C \leq 10^9$).
+
+El final de la entrada es indicado por $S_M = S_I = "*"$ y $C = 0$.
+
+\emph{La entrada debería ser leida desde la entrada estandar.}
+
+\section*{Salida}
+Para cada caso de prueba, la salida será una sola línea con el caracter \verb|"Y"| en mayúscula si, de acuerdo a Martin, Isa es la ganadora y el caracter \verb|"N"| en mayúscula en otro caso.
+
+\emph{La salida deberá ser escrita a la salida estandar.}\\
+
+\begin{tabular}{|l|l|}
+  \hline
+  \textbf{Ejemplo de Entrada}&\textbf{Ejemplo de salidad para la entrada}\\
+   &\\
+  \verb|ABC1234| \verb|ABC1240| \verb|6| & \verb|Y| \\     
+  \verb|ABC1234| \verb|ABC1234| \verb|6| & \verb|N| \\     
+  \verb|ACM5932| \verb|ADM5933| \verb|260000| & \verb|N| \\     
+  \verb|BBBBB23| \verb|BBBBC23| \verb|100| & \verb|N| \\     
+  \verb|BBBBB23| \verb|BBBBD00| \verb|77| & \verb|Y| \\     
+  \verb|ZZZ9997| \verb|ZZZ9999| \verb|1| & \verb|N| \\     
+  \verb|ZZZ9998| \verb|BBBBB01| \verb|3| & \verb|Y| \\     
+  \verb|ZZZZZ95| \verb|ZZZZZ99| \verb|10| & \verb|Y| \\     
+  \verb|BBBBB23| \verb|BBBBB22| \verb|5| & \verb|N| \\     
+  \verb|*| \verb|*| \verb|0| &  \\     
+  \hline
+\end{tabular}
+
+\end{document}
