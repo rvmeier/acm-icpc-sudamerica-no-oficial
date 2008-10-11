@@ -1,0 +1,7 @@
+#summary One-sentence summary of this page.
+= 2005 =
+= 2006 =
+= 2007 =
+  * [http://www.ic.unicamp.br/~acmcntst/Welcome_files/contest2007_v8.pdf Problemas] (http://www.ic.unicamp.br/~acmcntst/Welcome_files/contest2007_v8.pdf)
+  * [http://www.ic.unicamp.br/~acmcntst/Welcome_files/testset_2007_dos_v1.zip Datos de prueba (DOS)] (http://www.ic.unicamp.br/~acmcntst/Welcome_files/testset_2007_dos_v1.zip)
+  * [http://www.ic.unicamp.br/~acmcntst/Welcome_files/testset_2007_unix_v1.zip Datos de prueba UNIX] (http://www.ic.unicamp.br/~acmcntst/Welcome_files/testset_2007_unix_v1.zip)
