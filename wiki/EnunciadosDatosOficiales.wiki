@@ -2,7 +2,7 @@
 = Enunciados de los problemas y sus respectivos datos de prueba =
 == 2005 ==
   * [http://maratona.ime.usp.br/hist/2005/contest2005_v3_stdin.pdf Problemas]
-  * [http://www.ucsp.edu.pe/~apaz/testset_2005_unix.zip Datos de prueba (UNIX)
+  * [http://www.ucsp.edu.pe/~apaz/testset_2005_unix.zip Datos de prueba (UNIX)]
 == 2006 ==
   * [http://maratona.ime.usp.br/hist/2006/final/contest/contest2006_v4_sin_sout.pdf Problemas]
   * [http://www.ucsp.edu.pe/~apaz/testset_2006_unix.zip Datos de prueba (UNIX)]
