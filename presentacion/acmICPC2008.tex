@@ -1,0 +1,499 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \setbeamercovered{transparent}
+}
+
+
+\usepackage[activeacute,spanish]{babel}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\lstset{basicstyle=\small,keywordstyle=\color{purple}\bfseries, commentstyle=\color{green},stringstyle=\color{blue},  language=Java}
+
+
+\title%[Short Paper Title] % (optional, use only with long paper titles)
+{El Concurso Mundial de Programación de la ACM}
+\author%[Author, Another] % (optional, use only with lots of authors)
+{Alfredo Paz-Valderrama \inst{1}}
+\institute%[Sociedad Peruana de Computación] % (optional, but mostly needed)
+{
+  \inst{1}%
+  Sociedad Peruana de Computación
+}
+
+\subject{Una breve introducción al concurso mundial de programación de la ACM}
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Contenidos}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+\section{Antecedentes y Contexto}
+\begin{frame}
+  \frametitle{ACM }
+  \framesubtitle{Association for Computing Machinery}
+  \begin{itemize}
+   \item Es la sociedad de computación más antigua del mundo (1947).
+   \item Auspicia eventos relacionados al area de computación en todo el mundo.
+   \item Cualquier Universidad puede contar con un ``capítulo'' local.
+   \item El portal brinda acceso a una biblioteca virtual de millones de artículos.
+   \item Publicar en un evento ACM, debería ser algo deseable para cualquier persona dedicada a la investigación en computación.
+  \end{itemize}
+  \begin{center}
+   \includegraphics[width=0.3in]{images/acmlogo}
+  \end{center}
+\end{frame}
+
+\section{El ACM-ICPC}
+\subsection{Objetivo}
+\begin{frame}
+  \frametitle{ACM-ICPC}
+  \framesubtitle{Objetivo}
+  El ACM \emph{International Collegiate Programming Contest} (ICPC) brinda a los estudiantes universitarios, una oportunidad para mejorar sus conocimientos y habilidades en la resolución de problemas computacionales, además de la posibilidad de compararse con otros estudiantes de todo el mundo.
+  \begin{center}
+   \includegraphics[width=4in]{images/acmicpc}
+  \end{center}
+\end{frame}
+
+\subsection{Descripción}
+\begin{frame}
+  \frametitle{ACM-ICPC}
+  \framesubtitle{Descripción}
+ \begin{itemize}
+   \item El ACM-ICPC tienes dos etapas:
+     \begin{description}
+       \item[La final], el 21 de Abril del 2009 en el \emph{The Royal Institute of Technology}, Estocolmo-Suecia.
+       \item[Las eliminatorias regionales], el 15 de Noviembre de manera simultánea en todo sudamerica.
+     \end{description}
+   \item Es el Concurso Mundial de Programación más prestigioso (desde 1977).
+   \item Es un evento ACM auspiciado por IBM.
+   \item Cualquier Universidad o Facultad puede inscribir equipos en el concurso.
+   \item El concurso de es exclusivo para Facultades de computación.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{ACM-ICPC}
+ \framesubtitle{Organización-Mundial}
+ \begin{itemize}
+  \item El concurso divide al planeta en 6 regiones:
+  \begin{enumerate}
+   \item Norteamerica
+   \item Europa y la Republica Rusa
+   \item Asia
+   \item Africa y el Medio Oriente
+   \item El pacífico sur
+   \item Latinoamerica
+  \end{enumerate}
+ \end{itemize}
+ \begin{center}
+  \includegraphics[width=2in]{images/world}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \frametitle{ACM-ICPC}
+ \framesubtitle{Organización-Regional}
+ La región de latinoamérica tiene 4 sub-regiones:
+ \begin{enumerate}
+  \item Mexico y America Central
+  \item Sudamérica/Brasil
+  \item Sudamérica/Norte.
+  \item Sudamérica/Sur: Argentina, Bolivia, Chile, Paraguay, Perú y Uruguay. 
+ \end{enumerate}
+ \begin{center}
+  \includegraphics[width=1.0in]{images/la}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \frametitle{ACM-ICPC}
+ \framesubtitle{Región: Sudamérica/Sur}
+ Existen 4 sedes, que coordinan la realización simultanea de las eliminatorias, para este 15 de Noviembre.
+ \begin{itemize}
+  \item Argentina
+  \item Bolivia
+  \item Chile
+  \item Peru
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{ACM-ICPC}
+ \framesubtitle{Los equipos}
+ \begin{itemize}
+  \item Cada Equipo está conformado por 3 estudiantes.
+  \item Los equipos pueden representar a la Universidad o al Departamento al que pertenecen.
+  \item Se recomiendan que almenos uno de los integrantes tenga conocimientos de ingles y almenos puedan leer un texto con la ayuda de un diccionario.
+  \item No todo el equipo tiene que estar conformado por personas de computación, puede ser conveniente incluir a matemáticos, electrónicos o estudiantes de ciencias.
+  \item El equipo necesita un entrenador (coach) que será su delegado para el concurso.
+  \item Típicamente el entrenador es el profesor del curso de Algoritmos. 
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{ACM-ICPC}
+ \framesubtitle{El concurso}
+ \begin{itemize}
+  \item El concurso dura 5 horas.
+  \item Los Coach pueden observar el desarrollo del concurso en ambientes especiales.
+  \item Cada equipo dispone de una sola computadora.
+  \item Los equipos tienen posibilidad de imprimir sus programas.
+  \item Durante el concurso, hasta una hora antes de su finalización, se dan informes preliminares sobre el avance del concurso. Estos informes generales, pueden ser conocidos por los mismos participantes.
+  \item El informe final recién se hace publico en la cena de gala, en la clausura del evento.
+ \end{itemize}
+\end{frame}
+
+\section{Los problemas}
+\begin{frame}
+ \frametitle{Los Problemas}
+ \framesubtitle{Descripción}
+ \begin{itemize}
+  \item Se proponen de 5 a 9 problemas de tipo algorítmico, a resolver en 5 horas.
+  \item Cada problema tiene una descripción además de un ejemplo de las entradas (\emph{INPUT}) y salidas (\emph{OUTPUT}) esperadas.
+  \item Al menos dos de ellos son resolvibles por alguien de primer año.
+  \item Otros dos por alguien de segundo o tercer año (Ya llevó el curso de algoritmos \url{http://ocw.mit.edu/OcwWeb/Electrical-Engineering-and-Computer-Science/6-046JFall-2005/CourseHome/index.htm} ).
+  \item El resto de problemas hacen la diferencia. 
+ \end{itemize} 
+\end{frame}
+
+\begin{frame}
+ \frametitle{Los Problemas}
+ \framesubtitle{Las Soluciones}
+ \begin{itemize}
+  \item Una solución consiste del código fuente de un programa que cumple, exactamente, con el formato de la salida pedido.
+  \item Los jurados sólo evalúan las salidas producidas por el programa, al ingresarle un archivo de pruebas.
+  \item El jurado entonces, proporciona un escueto veredicto:
+  \begin{itemize}
+   \item Problema Correcto.
+   \item Tiempo Excedido.
+   \item Error en el formato.
+   \item Error en la compilación.
+   \item Error en el formato de la respuesta.
+  \end{itemize}
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Criterios de calificación}
+ \begin{itemize}
+  \item Existen dos criterios, en orden de prioridad:
+  \begin{enumerate}
+   \item El que resuelve más problemas.
+   \item El que lo hizo en menos tiempo.
+  \end{enumerate}
+  \item Si un equipo se equivoca en la solución de un problema, se le castiga agregandole una cantidad de tiempo, al tiempo en que obtuvo la respuesta correcta.
+  \item El castigo no tiene efecto si nunca se entrega el programa correcto.
+ \end{itemize}
+
+\end{frame}
+
+\section{Problema H: He is offside!}
+\begin{frame}
+ \frametitle{Contexto}
+ Hemisphere Network es la cadena de televisión más grande en Tumbolia, un pequeño país localizado al este de Sudamerica (o sur de América del Este). El deporte más popular en Tumbolia es el futbol, por supuesto; muchos juegos son transmitidos en señal abierta, cada semana en Tumbolia.
+\end{frame}
+
+\begin{frame}
+ \frametitle{El centro del problema}
+ La cadena recive muchos pedidos para repetir jugadas dudosas; usualmente, esto ocurre cuando un jugador es encontrado en posición adelantada (\emph{offside}). Un jugador atacante está en \emph{offside}, si él está más cerca a la línea de meta que el segundo último oponente. Un jugador no está en \emph{offside} si:
+ \begin{itemize}
+  \item él está en línea con el segundo último oponente o
+  \item él esta en línea con al menos dos oponentes.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{La conclusión}
+ A través del uso de la tecnología de gráficos en computadora, Hemisphere Network puede tomar una imagen del campo y determinar la distancia de los jugadores a la línea de méta, pero ellos aún necesitan un programa que dadas estas distancias, decida si un jugador está en \emph{offside}.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Entrada}
+ El archivo de entrada contiene varios casos de prueba. La primera línea de cada caso de prueba contiene dos enteros $A$ y $D$ separados por un sólo espacio indicando, respectivamente, el número de atacantes y defensores involucrados en el juego ($d \leq A, D \leq 11$). La siguiente línea contiene $A$ enteros $B_i$ separados por espacios en blanco, indicando las distancias de los atacantes a la línea de meta ($1 \leq B_i \leq 10^4$). La siguiente línea contiene $D$ enteros $C_j$ separados por espacios en blanco, indicando las distancias de los defensores a la línea de meta ($1 \leq C_j \leq 10^4$). El final de la entrada es indicado por $A = D = 0$.
+ 
+ \emph{La entrada debería ser leida de la entrada estandar} 
+\end{frame}
+
+\begin{frame}[fragile]%no soporta utf8
+ \frametitle{La Salida}
+ Para cada paso de prueba en la entrada imprimir una l'inea conteniendo un solo caracter: ``\verb|Y|'' (may'uscula) si hay un atacante en \emph{offside}, y ``\verb|N|'' (may'uscula) en otro caso.
+ 
+ \emph{La salida debe ser escrita en la salida estandar}.
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{center}
+\begin{tabular}{|l|l|}
+ \hline
+ \textbf{Ejemplo de Entrada} & \textbf{Ejemplo de Salida}\\
+ \verb|2 3| &\verb|N|\\
+ \verb|500 700| & \verb|Y|\\
+ \verb|700 500 500| & \verb|N|\\
+ \verb|2 2|& \\
+ \verb|200 400|& \\
+ \verb|200 1000|&\\
+ \verb|3 4|&\\
+ \verb|530 510 490|&\\
+ \verb|480 470 50 310|&\\
+ \verb|0 0|&\\
+ \hline
+\end{tabular}
+\end{center}
+ 
+\end{frame}
+
+%\lstset{language=Java}
+
+\begin{frame}[fragile]
+ 
+ \frametitle{Iniciando la solucion del problema}
+ Como el tiempo es importante, mientras vamos penzando en la soluci'on un integrante del equipo puede ir escribiendo el esqueleto b'asico, para leer las entradas:
+ \begin{lstlisting}
+class he{
+   public static void main(String[] args){
+      Scanner sc = new Scanner(System.in);
+      int A = sc.nextInt();
+      int D = sc.nextInt();
+      while(A != 0 && D != 0){
+         //Aqui va el resto del codigo
+         A = sc.nextInt();
+         D = sc.nextInt();
+      }
+
+   }
+}
+ \end{lstlisting}
+\end{frame}
+ 
+\begin{frame}[fragile]
+ \frametitle{Leyendo los casos de prueba}
+
+\begin{itemize}
+\item Se deben leer A valores y luego D valores
+ \begin{lstlisting}
+  
+      while(A != 0 && D != 0){
+         for(int i=0; i<A; i++)
+            int B = sc.nextInt();
+         for(int j=0; j<D; j++)
+            int C = sc.nextInt();
+         A = sc.nextInt();
+         D = sc.nextInt();
+      }
+
+ \end{lstlisting}
+\item Parece que nos conviene almacenar cada uno de los $B_i$ y $C_j$.
+\item Entonces, podemos usar un \verb|ArrayList| o un simple arreglo de enteros, ArrayList suele ser m'as poderoso.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+ \begin{lstlisting}
+      while(A != 0 && D != 0){
+         ArrayList B = new ArrayList());
+         for(int i=0; i<A; i++)
+            B.add(sc.nextInt());
+
+         ArrayList C = new ArrayList();
+         for(int j=0; j<D; j++)
+            C.add(sc.nextInt());
+
+         A = sc.nextInt();
+         D = sc.nextInt();
+      }
+
+ \end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Pensando en la Solución}
+ \begin{itemize}
+  \item Contamos con 2 conjuntos de números $B$ atacantes y $C$ defensores.
+  \item Tenemos que saber si todos los miembros de $B$ tienen números mayores o iguales que al menos dos integrantes de $C$.
+  \begin{center}
+   \includegraphics[width=1.5in]{images/partido}
+  \end{center}
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Fuerza Bruta}
+ \begin{itemize}
+  \item Hay que verificar que cada uno de los integrantes de $B$ tiene números mayores o igual que al menos dos integrantes de $C$.
+  \item También se pueden buscar dos integrantes de $C$ que tengan números menores que cualquier integrante de $B$.
+  \item Esta solución costará $\theta(n^2)$, porque por tendremos que compara a cada integrante de un grupo con un integrante del otro grupo.
+  \item La solución será difícil de implementar porque bastará encontrar un jugador en posición adelantada para responder ``Si'', luego tendríamos un problema: ?` Cómo se detendría el ciclo, con un \emph{break}?
+  \item Sugerencias \ldots
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Usando la lógica matemática}
+ \begin{itemize}
+  \item Lo que parecía un problema puede ser la solución: 
+  
+  Basta que un jugador esté en posición adelantada para responder ``Si''.
+  \item Hay que encontrar a los dos jugadores del conjunto ($C$) con las menores distancias a la línea de meta.
+  \item Sería conveniente tener este conjunto ordenado, luego bastaría comparar sólo al segundo menor. 
+  \item Si el conjunto de atacantes ($B$) está ordenado sería mejor, porque sólo tendríamos que comparar al menor de todos ellos $B_{menor}$. Si $B_{menor}$ está adelantado se responde ``Si'' y si él no lo está, ningúno más podrá estarlo, porque $B_{menor}$ es el menor de todos, no hay nadie más cerca a la línea de meta que él.
+ \end{itemize}
+ \begin{flushright}
+\textbf{EURECA!}                 \end{flushright}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Pensando en la implementación}
+ \begin{itemize}
+  \item ?`La API de java ofrece las funcionalidades que necesitamos?
+  \item Es posible ordenar un \emph{ArrayList}, pero realmente !`no necesitamos tanto!
+  \item Existe una clase \emph{Arrays} que trabaja sobre arreglos simples y tiene un método \emph{sort}, que ordena arreglos.
+  \item Este método está sobrecargado y también permite ordenar enteros. \emph{!`Hay que usar arreglos!}
+  \item El elemento menor de $B$ estará en la posición $0$.
+  \item El segundo menor de $C$ estará en la posición $1$.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+ \begin{lstlisting}
+      while(A != 0 && D != 0){
+         int[] B = new int[A];
+         for(int i=0; i<A; i++) 
+            B[i] = sc.nextInt();
+
+         int[] C = new int[D];
+         for(int j=0; j<D; j++) 
+            C[j] = sc.nextInt();
+
+         Arrays.sort(B);
+         Arrays.sort(C);
+
+         if(B[0]<C[1])System.out.print("S\n");
+         else System.out.print("N\n");
+         A = sc.nextInt();
+         D = sc.nextInt();
+      }
+ \end{lstlisting}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Un error!!!}
+ \begin{itemize}
+  \item Enviamos la solución a los jueces y nos han respondido ``NO: Error en el formato''.
+  \item En nuestra emoción por haber resuelto el problema tan rápido, hemos cometido un pequeño error.
+  \item El enunciado pedía que escribamos ``Y'' y ``N'', en mayúsculas; y nosotros escribimos ``S'' y ``N''.
+  \item Qué error!!!! ahora nos castigarán con unos minutos más.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{El costo algorítmico}
+ \begin{itemize}
+   \item La solución planeteada tiene costo $\theta(n \log n)$, por el paso de ordenamiento.
+   \item Sin embargo, no se necesita conocer el orden de todos los elementos, sólo necesitamos conocer al $B$ menor y al segundo $C$ menor.
+   \item Estos valores pueden ser calculados directamente de la lectura de los datos.
+   \item El costo de esta solución será sólo de $\theta(n)$.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+ \begin{lstlisting}
+       while(A != 0 && D != 0){
+         int minB = fMinC = sMinC = Integer.MAX_VALUE; 
+         for(int i=0; i<A; i++){
+            int B = sc.nextInt();
+            minB = Math.min(minB, B);
+         }
+         for(int j=0; j<D; j++){
+            int C = sc.nextInt();
+            if( C < fMinC ){
+               sMinC = fMinC;
+               fMinC = C;
+            }else 
+               sMinC = Math.min(sMinC,C);
+         }
+         if(minB < sMinC) System.out.println("Y");
+         else System.out.println("N");
+         A = sc.nextInt(); D = sc.nextInt();
+       }
+ \end{lstlisting}
+\end{frame}
+
+\section{Fotos}
+\begin{frame}
+ \begin{center}
+ \includegraphics[width=3.5in]{images/foto1}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \begin{center}
+ \includegraphics[width=3.5in]{images/foto2}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \begin{center}
+ \includegraphics[width=3.5in]{images/foto3}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \begin{center}
+ \includegraphics[width=3.5in]{images/foto4}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \begin{center}
+ \includegraphics[width=3.5in]{images/foto5}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \begin{center}
+ \includegraphics[width=3.5in]{images/foto6}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \begin{center}
+ \includegraphics[width=3.5in]{images/foto7}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Participación Peruana en Resumen}
+ \begin{tabular}{llll}
+  1999:& 1 Universidad,& 1 Problema,& 4/6 Resueltos\\
+2001:& 1 Universidad,& 1 Problema,& 4/6 Resueltos\\
+2002:& 1 Universidad,& 3 Problemas!,& 5/6 Resueltos\\
+2003:& 2 Universidades,& 1 Problema,& 5/8 Resueltos\\
+2004:& 4 Universidades,& 2 Problemas,& 5/8 Resueltos\\
+2005:& 9 Universidades!,& 4 Problemas,& 7/8 Resueltos\\
+2006:& 6 Universidades!,& 3 Problemas,& 9/9 Resueltos\\
+2007:& 6 Universidades!,& 4 Problemas,& 8/10\\
+ \end{tabular}
+
+\end{frame}
+
+\end{document}
+
+
