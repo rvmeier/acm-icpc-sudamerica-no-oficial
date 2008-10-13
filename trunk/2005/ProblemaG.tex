@@ -1,0 +1,83 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{url}
+\usepackage[spanish]{babel}
+\title{Problema G: Computer DJ}
+\author{traducido por: Alfredo Paz-Valderrama}
+\date{}
+\begin{document}
+\maketitle
+
+ Un DJ muy famoso, recientemente ha sido invitado a tocar en
+la fiesta de gala una conferencia de Ciencia de la
+Computacion. Tratando de impresionar a los participantes del
+evento, el decidió usar un programa que automáticamente
+eligiera las canciones de la fiesta. Sin embargo, el resultado
+fue un desastre, debido a la extraña y repetitiva manera en
+que el programa elegía las canciones.
+
+ Primero que todo, el DJ seleccionó $N$ canciones del conjunto
+de canciones que tenía disponible. Entonces, el programa usado por el
+DJ, etiquetó cada cancion usando un caracter
+distinto entre ’\verb|A|’ a ’\verb|Z|’. La $i$−ésima canción es etiquetada
+usando el $i$−ésimo caracter de la secuencia ’\verb|A|’-’\verb|Z|’. El
+programa selecciona las canciones a ser tocadas en la fiesta
+en el orden en que sus etiquetas aparecen en la siguiente
+secuencia infinita de caracteres: primero todas las palabras
+con un caracter en orden lexicográfico; luego todas las
+palabras con dos caracteres en orden lexicográfico; luego
+todas las palabras con tres caracteres en orden lexicográfico,
+y así en adelante. Para $N = 3$, esta secuencia debería ser 
+\verb|ABCAAABACBABBBCCACBCCAAAAABAACABAABBABC|\ldots
+
+ Al final de la fiesta, algunas personas preguntaron al DJ, si
+él recordaba cual fue la primera canción. Otros quería saber cual fue 
+la 25-ava, y así en adelante. El DJ no recordaba nada más
+que el extraño patrón de repeticiones, por esto, él requiere de
+su ayuda para que ud. diseñe un programa que responda a tales
+preguntas.
+
+
+\section*{Entrada}
+ La entrada contiene muchos casos de prueba. Cada caso
+consiste de tres líneas. La primera, contiene dos enteros $N$ y
+$Q$, indicando el número de canciones elegidas y el número de
+consultas hechas por los participantes. ($1 \leq N \leq 26$
+y $1 \leq Q \leq 1000$).
+
+En la segunda línea, estarán los $N$ títulos de las canciones
+(el título de una canción es una cadena de caracteres alfanuméricos de al menos uno y no más de 100 caracteres) separados por un solo
+espacio en blanco. La última línea, contiene una secuencia de
+consultas. Cada consulta es un numero $k$
+($1 ≤ k ≤ 100000000$) correspondientes a la $k$−ésima
+canción tocada en la fiesta. El final de la entrada es indicado
+por $N = Q = 0$.
+ 
+\emph{La entrada debería ser leida de la entrada estandar} 
+
+\section*{Salida}
+ Para cada consulta $k$ en un caso de prueba, se debería
+imprimir una sola línea conteniendo el nombre de la $k$−ésima
+canción tocada en la fiesta. Una línea en blanco debería seguir a cada caso de prueba.
+
+\emph{La salida deberá ser escrita a la salida estandar.}\\
+
+\begin{tabular}{|l|l|}
+  \hline
+  \textbf{Ejemplo de Entrada}&\textbf{Ejemplo de salidad para la entrada}\\
+   &\\
+ \verb|10 3| &\verb|S2|\\
+ \verb|S0 S1 S2 S3 S4 S5 S6 S7 S8 S9| & \verb|S5|\\
+ \verb|3 6 10| & \verb|S9|\\
+ \verb|3 5|& \\
+ \verb|Pathethique TurkishMarch Winter|& \verb|Pathethique|\\
+ \verb|1 2 3 4 16|& \verb|TurkishMarch|\\
+ \verb|0 0|& \verb|Winter|\\
+ & \verb|Pathethique|\\
+  \hline
+\end{tabular}
+
+\end{document}

@@ -1,0 +1,151 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{url}
+\usepackage[spanish]{babel}
+
+\usepackage[usenames]{color}
+\usepackage{listings}
+\lstset{basicstyle=\small,keywordstyle=\color{blue}\bfseries, commentstyle=\color{green},stringstyle=\color{red},  language=Java}
+
+
+
+\title{Problema G: Computer DJ}
+\author{Alfredo Paz-Valderrama}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+El presente artículo muestra mi solución al problema G, de las eliminatorias sudamericanas para el concurso mundial de programación de la ACM.
+\end{abstract}
+
+\section{Pensando en la solución}
+La primera solución que se le puede ocurrir, es generar toda la secuencia de letras y luego responder la consulta directamente a partir de la secuencia generada. 
+
+Es claro que esta solución sería muy cara si nos preguntaran por un número muy grande como \verb|100 000 000|.
+
+Hay que intentar encontrar sólamente la letra que le concierne a la pregunta.
+
+Observando el número de combinaciones posibles con grupos de $n$ letras, sobre tres canciones, tendremos:
+
+\begin{enumerate}
+   \item Con una sola letra habrán 3 combinaciones distintas
+      \begin{verbatim}
+      A B C
+      \end{verbatim}
+
+   \item Con dos letras serán 18 combinaciones distintas
+      \begin{verbatim}
+      AA AB AC BA BB BC CA CB CC
+      \end{verbatim}
+
+   \item Con tres letras serán 81 combinaciones distintas
+      \begin{verbatim}
+      AAA AAB AAC ABA ABB ABC ACA ACB ACC ... CCA CCB CCC
+      \end{verbatim}
+\end{enumerate}
+
+Haciendo inducción sobre estos números se observa que para tres letras:
+
+\begin{center}
+\begin{tabular}{|l|l|r|}
+\hline
+Tamaño Grupos & Combinaciones & Producto \\ \hline
+\hline
+1 & 3 & 3*1 \\ \hline
+2 & 18 & (3*3)*2 \\ \hline
+3 & 81 & (3*3*3)*3 \\ 
+\ldots&\ldots&\ldots\\ \hline
+n & \ldots & $3^n*n$ \\ \hline
+\end{tabular}
+\end{center}
+
+Si la consulta fuera un número menor o igual que 3, entonces el caracter buscado estaría en el primer grupo; de lo contrario, si la consulta fuera un número mayor que 3, pero menor que o igual que 18, el caracter buscado estaría en el segundo grupo, y así sucesivamente, entonces para cualquier $k$
+
+\begin{displaymath}
+\sum_{i=1}3^i*i \leq k
+\end{displaymath}
+
+Donde $i$ es el número de dígitos y $k$ es el número consultado.
+
+Con esta fórmula podremos saber en qué grupo debemos buscar la consulta: el grupo $i$. 
+
+Ahora hay que averiguar cual letra en el grupo es la que nos interesa. 
+
+En primer lugar, hay que restar la cantidad de caracteres de los grupos anteriores $k - \sum_{anteriores-grupos} digitos$, por ejemplo si $k=11$, entonces la respuesta estará en la posición 8 el segundo grupo, en la posición $k-3$, ya que $3$ es el número de combinaciones del primer grupo. Por lo tanto la respuesta estará en el segundo grupo para un $k=8$.
+
+En segundo lugar, en nuestros ejemplos podremos ver que dentro de los grupos de $i$ letras, nos interesa la agrupación $k/i$; para el ejemplo anterior la respusta estará en la agrupación $8/2 = 4$
+
+\verb|AA AB AC| \textbf{BA} \verb|BB BC CA CB CC|
+
+entonces definimos a $g = k/i$, cómo la agrupación que nos interesa en el grupo $i$.
+
+Finalmente, cada caracter del grupo tiene una regla de generación que se puede generalizar: $digito = \frac{g}{n^d}\%n$. Donde $d$ es la posición del dígito.
+
+\section{Implementación}
+Para facilitar el cálculo conviene trabajar con números y no con letras, entonces se plantea la siguiente relación:
+
+\begin{center}
+\begin{tabular}{|l|l|}
+  \hline
+  0 & A\\ \hline
+  1 & B\\ \hline
+  2 & C\\ \hline
+  \ldots & \ldots \\ \hline
+  25 & Z \\ \hline
+\end{tabular}
+\end{center}
+
+Se define la funcion $key$, que recibe la consulta $k$ y el número de canciones seleccionadas por el DJ $n$, y que retorna el índice de la canción $k$-ésima.
+
+\begin{lstlisting}
+   public class dj{
+      public static int key(int k, int n){
+         if(n == 1) return 0;
+         int i = 0;
+         for(int desc = (int)Math.pow(n,i)*i; k>desc;
+               desc = (int)Math.pow(n,i)*i){
+            k = k - desc;
+            i++;
+         }
+         k--;
+         int g = k/i, d = (i-1) - k \% i;
+         return (g/(int)pow(n,d));
+      }
+   }
+\end{lstlisting}
+
+\section{Lectura/Escritura de los datos}
+
+Normalmente la lectura/escritura de los datos es por la entrada y salida estandar, respectivamente. Es muy importante tener encuenta, que se debe respetar escrupulosamente la forma de las entradas y las salidas y nunca se deben imprimir mensajes como ``Por favor ingrese un número'', ni nada que se le parezca.
+
+Los jueces probarán nuestros programas con archivos de prueba previamente creados y no interactuarán directamente con nuestros programas.
+
+\begin{lstlisting}
+   import java.util.Scanner;
+   public clas dj{
+      ...
+      public static void main(String[] args){
+         Scanner sc = new Scanner(System.in);
+         int n = sc.nextInt();
+         int q = sc.nextInt();
+         while(n){
+            String []s = new String[n];
+            for(int i=0; i<n; i++) 
+               s[i]=sc.next();
+            for(int i=0; i<q; i++){
+               int k = sc.nextInt();
+               System.out.println(key(k,n));
+
+            }
+            n = sc.nextInt();
+            q = sc.nextInt();
+         }
+      }    
+   }
+\end{lstlisting}
+
+
+\end{document}
