@@ -1,6 +1,18 @@
 /*
  * ACM ICPC 2007 South America Problem A: Ambiguous Codes.
  * Author: Abraham M. Santos R.
+ *
+ * This problem was solved using Dijkstra shortest path algorithm.
+ * Each vertex in the graph is a string (the mismatch part of two strings)
+ * The starting and ending node is the empty string.
+ * The cost is the size of the word
+ * Example:
+ *   Current node:      "ab"
+ *   Current edge:      "abcde"   (a word in the code)
+ *   Mismatch string:   "cde"
+ *   Graph:
+ *          "ab", cost=2
+ *   "ab" ----------------->  "cde"
  */
 #include <cstdio>
 #include <cstring>
@@ -38,6 +50,9 @@ int ambiguity() {
    map<Substr, int, SubRank> C;
    priority_queue<Prefix, vector<Prefix>, PrefRank> Q;
 
+   // before to use Dijkstra put some nodes in the 
+   // queue because the starting node (empty string)
+   // is the same as the target node.
    for ( int j = 0; j < N; j++ )
       for ( int i = 0; i < j; i++ ) {
          const char *ptr1 = W[i];
