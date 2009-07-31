@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-#include <assert.h>
+#include <string.h>
 #define MAX_RANGE 8
 
 typedef struct {
@@ -26,28 +26,8 @@ int edges[5][5] = {
    {7, 6, 5, 6, 7}
 };
 
-struct PointList *makePointListNode(Point p, int w, struct PointList* next){
-   struct PointList *pl = (struct PointList*)
-      malloc(sizeof(struct PointList));
-   pl->point = p;
-   pl->weigth = w;
-   pl->next = next;
-   return pl;
-}
-
-void fillMatrix(int m[][max.c], int x1, int y1, int x2, int y2, int val){
-   assert(0 <= x1); assert(x1 <= x2);
-   assert(0 <= x2); assert(x2 < max.c);
-   
-   assert(0 <= y1); assert(y1 <= y2);
-   assert(0 <= y2); assert(y2 < max.r);
-   int i,j;
-   for(j = y1; j <= y2; j++)
-      for(i = x1; i <= x2; i++)
-         m[j][i] = val;
-}
-
 int getLess(struct PointList* lst[], Point* p, int *w){
+   struct PointList* tmp;
    int first = current;
    while(!lst[current]){
       current = (current + 1) % MAX_RANGE;
@@ -55,32 +35,36 @@ int getLess(struct PointList* lst[], Point* p, int *w){
    }
    *p = lst[current]->point;
    *w = lst[current]->weigth;
-   struct PointList* tmp = lst[current];
-   free(tmp);
+   tmp = lst[current];
    lst[current] = lst[current]->next;
+   free(tmp);
    return 1;
 }
 void addPoint(struct PointList* lst[], Point p, int w){
    int idx = w % MAX_RANGE;
-   lst[idx] = makePointListNode(p,w,lst[idx]);
+   struct PointList* next = lst[idx];
+   lst[idx] = (struct PointList*)malloc(sizeof(struct PointList));
+   lst[idx]->point = p;
+   lst[idx]->weigth = w;
+   lst[idx]->next = next;
 }
 
-void dijsktra(int marsh[][max.c], int cost[][max.c], Point s){
-   cost[s.r][s.c] = 0;
-
+void dijsktra(int marsh[][max.c], int cost[][max.c], Point s, Point t){
    struct PointList* list[MAX_RANGE];
    int x;
+   Point p;
+   int w;
+
+   cost[s.r][s.c] = 0;
    for(x = 0; x < MAX_RANGE; x++)
       list[x]=0;
 
    addPoint(list, s, cost[s.r][s.c]);
 
-   Point p;
-   int w;
    while(getLess(list, &p, &w)){
       if(w <= cost[p.r][p.c]){
-         cost[p.r][p.c] = w;
          int i, j;
+         cost[p.r][p.c] = w;
          for(j = 0; j < 5; j++)
             for(i = 0; i < 5; i++){
                Point adj;
@@ -104,26 +88,32 @@ int main(int argc, char *argv[]){
    
    while(!(max.c == 0 && max.r == 0)){
       int marsh[max.r][max.c];
-      fillMatrix(marsh, 0, 0, max.c-1, max.r-1, 1);
-      
       int cost[max.r][max.c];
-      fillMatrix(cost, 0, 0, max.c-1, max.r-1, INT_MAX);
-      
       Point frog, toad;
+      int w;
+      int i,j;
+
+      for(j = 0; j < max.r; j++)
+         for(i = 0; i < max.c; i++){
+            marsh[j][i] = 1;
+            cost[j][i] = INT_MAX;
+         }
+      
       scanf("%d %d %d %d", &frog.c, &frog.r, &toad.c, &toad.r);
       frog.c--; frog.r--; toad.c--; toad.r--;
       
-      int w;
       scanf("%d", &w);
       
       while(w > 0){
          int c1, r1, c2, r2;
-         scanf("%d %d %d %d", &c1, &r1 , &c2, &r2);
-         fillMatrix(marsh, c1-1, r1-1, c2-1, r2-1, 0);
+         scanf("%d %d %d %d", &c1, &r1, &c2, &r2);
+         for(j = r1 - 1; j < r2; j++)
+            for(i = c1 - 1; i < c2; i++)
+               marsh[j][i] = 0;
          w--;
       }
 
-      dijsktra(marsh, cost, frog);
+      dijsktra(marsh, cost, frog, toad);
 
       if(cost[toad.r][toad.c] == INT_MAX)
          printf("impossible\n");
