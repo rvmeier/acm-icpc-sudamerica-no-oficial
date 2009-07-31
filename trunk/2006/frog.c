@@ -3,6 +3,7 @@
 #include <limits.h>
 #include <string.h>
 #define MAX_RANGE 8
+#define MAX_QUEUES_SIZE 5000
 
 typedef struct {
    int r;
@@ -10,11 +11,13 @@ typedef struct {
 } Point;
 Point max;
 
-struct PointList{
+struct PointWeight{
    Point point;
    int weigth;
-   struct PointList* next;
 };
+
+struct PointWeight queueArray[MAX_RANGE][MAX_QUEUES_SIZE];
+int queueArraySize[MAX_QUEUES_SIZE];
 
 int current;
 
@@ -26,42 +29,36 @@ int edges[5][5] = {
    {7, 6, 5, 6, 7}
 };
 
-int getLess(struct PointList* lst[], Point* p, int *w){
-   struct PointList* tmp;
+int getLess(Point* p, int *w){
    int first = current;
-   while(!lst[current]){
+   while(!queueArraySize[current]){
       current = (current + 1) % MAX_RANGE;
       if(first == current) return 0;
    }
-   *p = lst[current]->point;
-   *w = lst[current]->weigth;
-   tmp = lst[current];
-   lst[current] = lst[current]->next;
-   free(tmp);
+   queueArraySize[current]--;
+   *p = queueArray[current][queueArraySize[current]].point;
+   *w = queueArray[current][queueArraySize[current]].weigth;
    return 1;
 }
-void addPoint(struct PointList* lst[], Point p, int w){
+void addPoint(Point p, int w){
    int idx = w % MAX_RANGE;
-   struct PointList* next = lst[idx];
-   lst[idx] = (struct PointList*)malloc(sizeof(struct PointList));
-   lst[idx]->point = p;
-   lst[idx]->weigth = w;
-   lst[idx]->next = next;
+   queueArray[idx][queueArraySize[idx]].point = p;
+   queueArray[idx][queueArraySize[idx]].weigth = w;
+   queueArraySize[idx]++;
 }
 
 void dijsktra(int marsh[][max.c], int cost[][max.c], Point s, Point t){
-   struct PointList* list[MAX_RANGE];
    int x;
    Point p;
    int w;
 
    cost[s.r][s.c] = 0;
    for(x = 0; x < MAX_RANGE; x++)
-      list[x]=0;
+      queueArraySize[x]=0;
 
-   addPoint(list, s, cost[s.r][s.c]);
+   addPoint(s, cost[s.r][s.c]);
 
-   while(getLess(list, &p, &w)){
+   while(getLess(&p, &w)){
       if(w <= cost[p.r][p.c]){
          int i, j;
          cost[p.r][p.c] = w;
@@ -76,7 +73,7 @@ void dijsktra(int marsh[][max.c], int cost[][max.c], Point s, Point t){
                    marsh[adj.r][adj.c] &&
                    w + edges[j][i] < cost[adj.r][adj.c]){
                   cost[adj.r][adj.c] = w + edges[j][i];
-                  addPoint(list, adj, cost[adj.r][adj.c]);
+                  addPoint(adj, cost[adj.r][adj.c]);
                }
             }
       }
