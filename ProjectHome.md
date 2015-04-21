@@ -1,0 +1,1 @@
+Este proyecto contendrá las traducciones al castellano de los problemas del ACM-ICPC y sus repectivas soluciones en java, c y c++. Los enunciados estarán en latex.
